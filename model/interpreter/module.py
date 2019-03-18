@@ -85,6 +85,19 @@ class Add(Module):
     def _fuzzy(self, vx, vy):
         return Fuzzy(modM(np.convolve(vx, vy)))
 
+class Sub(Module):
+
+    def _discrete(self, vx, vy):
+        return Discrete((vx - vy) % M)
+
+    def _fuzzy(self, vx, vy):
+        '''
+        result[(i - j) % M] = vx[i] - vy[j]
+        we can reverse the vy, convolve, then shift back to the 0 postion
+        this is a valid implementation following (i + (M - j)) % M = (i - j) % M
+        '''
+        return Fuzzy(modM(np.roll(np.convolve(vx, vy[::-1]), -len(vy)+1)))
+
 def modM(x: np.ndarray) -> np.ndarray:
     chunks = np.concatenate((x, np.zeros((M - len(x) % M) % M))).reshape(-1, M)
     return np.sum(chunks, axis=0)

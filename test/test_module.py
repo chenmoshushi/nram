@@ -46,3 +46,9 @@ class TestModule(unittest.TestCase):
         self.assertTrue(np.array_equal(ADD(self.f0, self.f1).v, self.f1.v))
         self.assertTrue(np.array_equal(ADD(self.f12, self.f1).v, self.f23.v))
 
+    def test_SUB(self):
+        self.assertEqual(SUB(self.d0, self.d1).v, 35)
+        self.assertTrue(np.array_equal(SUB(self.f2, self.f1).v, self.f1.v))
+        self.assertTrue(np.array_equal(SUB(self.f23, self.f1).v, self.f12.v))
+
+
