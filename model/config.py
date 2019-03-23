@@ -10,5 +10,10 @@ TWO = Two()
 INC = Inc()
 ADD = Add()
 SUB = Sub()
-
+DEC = Dec()
+LT = LessThan()
+LE = LessEqual()
+EQ = Equal()
+MIN = Min()
+MAX = Max()
 
