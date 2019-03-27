@@ -1,5 +1,5 @@
-# Cell numbers of memory
-M = 100
+from .memory.memory import Memory
+mem = Memory()
 
 from .interpreter.module import *
 

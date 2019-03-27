@@ -1,4 +1,4 @@
-from ..config import M
+from ..param import M
 from .datatype import DataType, Discrete, Fuzzy
 
 import numpy as np

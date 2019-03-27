@@ -20,4 +20,3 @@ class Fuzzy(DataType):
             raise TypeError
         self.v = v
 
-
