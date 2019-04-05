@@ -1,9 +1,10 @@
+# global memory instance
 from .memory.memory import Memory
 mem = Memory()
 
+# global module instances
 from .interpreter.module import *
 
-# Global module instances
 ZERO = Zero()
 ONE = One()
 TWO = Two()
@@ -16,4 +17,14 @@ LE = LessEqual()
 EQ = Equal()
 MIN = Min()
 MAX = Max()
+
+# global random state management
+from .data.rand import Rand
+RAND = Rand()
+
+# global data generator instances
+from .data.generator import *
+
+ACCESS = Access()
+INCREAMENT = Increment()
 

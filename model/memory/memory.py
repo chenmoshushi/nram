@@ -1,4 +1,4 @@
-from ..param import M
+from ..param import M, NULL
 from ..interpreter.datatype import DataType, Discrete, Fuzzy
 from ..interpreter.util import castToFuzzy, fuzzyFromInt
 
@@ -8,13 +8,15 @@ from typing import List
 class Memory:
     def __init__(self):
         self._mem = np.zeros((M, M))
-        self._mem[:,0] = 1.0
+        self._mem[:,NULL] = 1.0
 
     def clear(self):
         self._mem = np.zeros((M, M))
-        self._mem[:,0] = 1.0
+        self._mem[:,NULL] = 1.0
 
     def initializeWith(self, xs: List[int]):
+        if len(xs) > M:
+            raise ValueError("initial value sequence is too long to fit in the memory")
         for (i, x) in enumerate(xs):
             self._mem[i] = fuzzyFromInt(x)
 
