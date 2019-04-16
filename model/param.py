@@ -1,7 +1,10 @@
-# Cell numbers of memory
+# Number of memory cells
 M = 20
 
-# special NULL value
+# Number of register cells
+R = 10
+
+# Special NULL value
 NULL = 0
 
 # Seed of generator

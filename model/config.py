@@ -2,6 +2,10 @@
 from .memory.memory import Memory
 mem = Memory()
 
+# global register instances
+from .memory.memory import Register
+reg = Register()
+
 # global module instances
 from .interpreter.module import *
 

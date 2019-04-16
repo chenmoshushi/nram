@@ -1,7 +1,7 @@
 from model.interpreter.datatype import DataType, Discrete, Fuzzy
 from model.interpreter.util import normalDisFuzzy
-from model.config import mem
-from model.param import M
+from model.config import mem, reg
+from model.param import M, R
 
 import unittest
 import numpy as np
@@ -50,4 +50,17 @@ class TestMemory(unittest.TestCase):
         self.assertTrue(np.array_equal(mem.get(self.f1).v, np.array([0.5, 0.25, 0.25] + [0.0] * (M-3))))
         self.assertTrue(np.array_equal(mem.get(self.f2).v, np.array([0.5, 0.25, 0.25] + [0.0] * (M-3))))
 
+class test_register(unittest.TestCase):
+
+    def setUp(self):
+        self.f0 = normalDisFuzzy([0], R)
+        self.f1 = normalDisFuzzy([1], R)
+        self.f01 = normalDisFuzzy([0, 1])
+        self.f12 = normalDisFuzzy([1, 2])
+
+    def test_set_and_output(self):
+        reg.clear()
+        reg.set(self.f0, self.f01)
+        reg.set(self.f1, self.f12)
+        self.assertTrue(np.array_equal(reg.output(), np.array([0.5, 0.0] + [1.0] * (R-2))))
 

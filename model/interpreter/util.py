@@ -5,9 +5,9 @@ import numpy as np
 from typing import List
 
 
-def normalDisFuzzy(xs: List[int]) -> Fuzzy:
+def normalDisFuzzy(xs: List[int], size: int = M) -> Fuzzy:
     p = 1.0 / len(xs)
-    res = np.zeros(M)
+    res = np.zeros(size)
     for x in xs:
         res[x] = p
     return Fuzzy(res)
