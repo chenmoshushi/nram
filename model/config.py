@@ -3,8 +3,8 @@ from .memory.memory import Memory
 mem = Memory()
 
 # global register instances
-from .memory.memory import Register
-reg = Register()
+from .memory.memory import RegStack
+regStack = RegStack()
 
 # global module instances
 from .interpreter.module import *

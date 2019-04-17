@@ -21,6 +21,9 @@ class Memory:
         for (i, x) in enumerate(xs):
             self._mem[i] = fuzzyFromInt(x)
 
+    def content(self):
+        return self._mem
+
     def set(self, p: DataType, a: DataType):
         if isinstance(p, Discrete):
             self._mem[p.v] = castToFuzzy(a).v
@@ -53,5 +56,25 @@ class Register(Memory):
         self.clear()
 
     def output(self):
+        # output to controller, the probability of a register is zero
         return self._mem[:,NULL]
+
+    def update(self, vals):
+        # vals.shape needs to be (R, M)
+        self._mem = vals
+
+
+
+class RegStack:
+    def __init__(self):
+        self._stack = []
+
+    def push(self):
+        self._stack.append(Register())
+
+    def top(self):
+        return self._stack[-1]
+
+    def pop(self):
+        self._stack.pop()
 
